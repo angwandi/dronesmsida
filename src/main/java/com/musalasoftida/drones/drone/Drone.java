@@ -10,9 +10,8 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.math.BigDecimal;
 
 @Entity
 @AllArgsConstructor
@@ -29,14 +28,15 @@ public class Drone {
     @Enumerated(EnumType.STRING)
     @Transient
     private Integer weightLimit;
-    @Range(min = 0, max = 100)
-    private Integer batteryCapacity;
+    @Min(value = 0, message = "Battery capacity must be greater than or equal to 0")
+    @Max(value = 100, message = "Battery capacity must be less than or equal to 100")
+    private Double batteryCapacity;
     @NotNull(message = "Valid model type is required")
     private Model model;
     @Enumerated(EnumType.STRING)
     private State state;
 
-    public Drone(String serialNumber, Integer batteryCapacity, Model model, State state) {
+    public Drone(String serialNumber, Double batteryCapacity, Model model, State state) {
         this.serialNumber = serialNumber;
         this.batteryCapacity = batteryCapacity;
         this.model = model;

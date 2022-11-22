@@ -21,20 +21,23 @@ public class DroneConfig {
                     List.of(
                             new Drone(
                                     "-~J-G25LZX/-CK#ZV$_V",
-                                    56,
+                                    45.0,
                                     Model.Heavyweight,
                                     State.IDLE),
                             new Drone(
-                                    "+78_C9$YR'&D-~J-G25LZX/-CK#ZV$_V", 90,
+                                    "+78_C9$YR'&D-~J-G25LZX/",
+                                    90.99,
                                     Model.Lightweight,
                                     State.DELIVERED),
 
                             new Drone(
-                                    "QM2AE2GEQTNYG_`^5'@RG^=+M8Z6R+G#H6#", 45,
+                                    "QM2AE2GEQTNYG_`^5'@RG^=+M8Z6R+G#H6#",
+                                    45.0,
                                     Model.Cruiserweight,
                                     State.RETURNING),
                             new Drone(
-                                    "`^5'@RG^=+M8Z6R+G#H6#XM2'TWDMW/", 150,
+                                    "`^5'@RG^=+M8Z6R+G#H6#XM2'TWDMW/",
+                                    100.0,
                                     Model.Heavyweight,
                                     State.DELIVERING)
                     )
