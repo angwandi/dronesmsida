@@ -27,6 +27,7 @@ public class Medication {
     private Integer weight;
     //@Pattern(regexp = "^[A-Z0-9_]{11,15}$") todo: add regex for code
     private String code;
+    //todo add image module as byte array
     private String image;
 
     @ManyToOne(cascade = CascadeType.ALL)

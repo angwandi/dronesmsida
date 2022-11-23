@@ -28,6 +28,8 @@ public class DroneService {
     }
 
     public Drone createDrone(Drone drone) {
+
+
         List<Medication> medicationsList = new ArrayList<>();
         if (drone.getMedications() != null) {
             for (Medication createMedicationRequest : drone.getMedications()) {
