@@ -1,17 +1,18 @@
 package com.musalasoftida.drones.drone;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.musalasoftida.drones.medication.Medication;
 import com.musalasoftida.drones.utilities.Model;
 import com.musalasoftida.drones.utilities.State;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -35,29 +36,26 @@ public class Drone {
     private Model model;
     @Enumerated(EnumType.STRING)
     private State state;
+    @OneToMany(mappedBy = "drone", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List<Medication> medications;
 
-    public Drone(String serialNumber, Double batteryCapacity, Model model, State state) {
+
+    public Drone(String serialNumber, Double batteryCapacity, Model model, State state, List<Medication> medications) {
         this.serialNumber = serialNumber;
         this.batteryCapacity = batteryCapacity;
         this.model = model;
         this.state = state;
+        this.medications = medications;
     }
 
     //getting transient field weightLimit from model
     public Integer getWeightLimit() {
         switch (Model.valueOf(model.toString())) {
-            case Middleweight -> {
-                this.weightLimit = 200;
-            }
-            case Cruiserweight -> {
-                this.weightLimit = 300;
-            }
-            case Heavyweight -> {
-                this.weightLimit = 500;
-            }
-            default -> {
-                this.weightLimit = 100;
-            }
+            case Middleweight -> this.weightLimit = 200;
+            case Cruiserweight -> this.weightLimit = 300;
+            case Heavyweight -> this.weightLimit = 500;
+            default -> this.weightLimit = 100;
         }
         return weightLimit;
     }

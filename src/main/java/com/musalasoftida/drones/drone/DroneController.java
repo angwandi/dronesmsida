@@ -1,9 +1,7 @@
 package com.musalasoftida.drones.drone;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +18,11 @@ public class DroneController {
     @GetMapping
     public List<Drone> getDrones() {
         return droneService.getDrones();
+
+    }
+
+    @PostMapping()
+    public Drone createDrone(@RequestBody Drone createDroneRequest) {
+        return droneService.createDrone(createDroneRequest);
     }
 }
