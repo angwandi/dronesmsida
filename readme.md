@@ -20,4 +20,9 @@
 - Commit history is available in the repository: https://github.com/angwandi/dronesmsida 
 - branch: submission
 
+####Running the jar file: 
+- `java -jar drones-0.0.1-SNAP
+  SHOT.jar
+  ` making you are in the target folder of the root directory of the project.
 
+IDE used: Intellij IDEA
